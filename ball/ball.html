@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #bg {
+            width: 100vw;
+            height: 100vh;
+        }
+
+        #bpic {
+            position: absolute;
+            top: 0;
+            width: 100px;
+            margin: auto;
+            left: 0;
+            right: 0;
+            animation: b 1s linear 0s infinite;
+        }
+
+        @keyframes b {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <img id="bg" src="ground.jpg" alt="">
+    <img src="ball.png" id="bpic" alt="">
+    <script>
+        function ballspin() {
+            let k = setInterval(function () {
+
+                let a = parseFloat(bpic.offsetTop) + 1
+                bpic.style.top = a + "px"
+                // let ballbottom = parseInt(bpic.offsetTop) + parseInt(bpic.innerHeight)
+                if ((bpic.offsetTop + bpic.offsetHeight) == window.innerHeight) {
+                    clearInterval(k)
+                    let x = setInterval(function () {
+                        let b = parseFloat(bpic.offsetTop) - 1
+                        bpic.style.top = b + 'px'
+                        if (bpic.offsetTop == 200) {
+                            clearInterval(x)
+                        }
+                    }, 10)
+
+                }
+
+            }, 10)
+
+        }
+        ballspin()
+    </script>
+
+</body>
+
+</html>

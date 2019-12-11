@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script>
+
+        let categories = [
+
+        ];
+
+        function updateCaeteogirs() {
+
+
+            myCatgories.innerHTML = '';
+
+            categories.forEach(function (category) {
+
+                myCatgories.innerHTML += '<option>' + category.name + '</option>'
+
+            });
+
+        }
+
+        function addCategory() {
+
+
+            // addCategoryForm.style.display = "block";
+
+            let categoryName = prompt("Enter category");
+
+            let newCategory = {
+                name: categoryName,
+                items: []
+            }
+
+            categories.push(newCategory);
+            updateCaeteogirs()
+        }
+        function addInventory() {
+
+
+            let inventoryName = prompt("Enter inventory");
+            let inventoryPrice = prompt("Enter price");
+            let inventoryQty = prompt("Enter quantity");
+
+
+            let newInventory = {
+                name: inventoryName,
+                price: inventoryPrice,
+                qty: inventoryQty
+            };
+
+            let categoryFound = categories.find(function (category) {
+
+                if (category.name == myCatgories.value) {
+                    return true;
+                }
+
+            })
+
+            categoryFound.items.push(newInventory)
+
+
+            console.log(categoryFound);
+
+
+        }
+
+        function deleteItem() {
+
+            let index = event.target.getAttribute('data-item');
+            let categoryName = event.target.getAttribute('data-name');
+
+            let categoryFOund = categories.find((category) => {
+
+                if (category.name == categoryName) {
+                    return true;
+                }
+
+            });
+
+            categoryFOund.items.splice(index, 1);
+
+            showInventory()
+
+            console.log(index);
+
+        }
+
+        function showInventory() {
+
+            detailsTable.innerHTML = '';
+
+            categories.forEach(function (category) {
+
+                detailsTable.innerHTML += '<tr> <td colspan="3">' + category.name + '</td> </tr>';
+
+                category.items.forEach((item, index) => {
+
+                    detailsTable.innerHTML += '<tr> <td>' + item.name + '</td> <td>' + item.qty + '</td> <td>' + item.price + '</td> <td> <button data-name=' + category.name + ' data-item=' + index + ' onclick="deleteItem()">Delete</button> </td> </tr>';
+
+                })
+
+            });
+
+
+        }
+
+    </script>
+
+
+</head>
+
+<body>
+
+    <div>
+        <select id="myCatgories"></select>
+    </div>
+
+    <button onclick="addCategory()">Add Category</button>
+    <button onclick="addInventory()">Add Stock</button>
+    <button onclick="showInventory()">Show Inventory</button>
+
+    <table id="detailsTable" border="1">
+
+
+
+    </table>
+
+    <!-- 
+    <div id="addCategoryForm" style="display:none">
+
+        <input />
+        <input />
+        <input />
+
+    </div> -->
+
+</body>
+
+</html>

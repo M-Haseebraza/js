@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        table {
+            border: 4px orangered solid;
+            width: 300px;
+            height: 400px;
+            color: orange;
+            background: lightgoldenrodyellow;
+        }
+
+        input {
+            width: 50px;
+            background: lightgoldenrodyellow;
+        }
+
+        button {
+            background: orangered;
+            width: 100px;
+            height: 40px;
+            border: orangered 2px dotted;
+            border-radius: 30px;
+            font-size: larger;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <th>Dishes</th>
+            <th>Price</th>
+            <th>Order</th>
+            <th>Quantity</th>
+
+        </tr>
+
+        <tr>
+            <td>Biryani</td>
+            <td>180</td>
+            <td><input id="bir" type="checkbox" class="box"></td>
+            <td><input type="number"></td>
+            <td><button onclick="cancel(event)">Cancel</button></td>
+        </tr>
+        <tr>
+            <td>Palao</td>
+            <td>160</td>
+            <td><input type="checkbox" class="box"></td>
+            <td><input type="number"></td>
+            <td><button onclick="cancel(event)">Cancel</button></td>
+        </tr>
+        <tr>
+            <td>Fried Rice</td>
+            <td>200</td>
+            <td><input type="checkbox" class="box"></td>
+            <td><input type="number"></td>
+            <td><button onclick="cancel(event)">Cancel</button></td>
+        </tr>
+        <tr>
+            <td>Raita</td>
+            <td>50</td>
+            <td><input id="raita" type="checkbox" class="box"></td>
+            <td><input type="number"></td>
+            <td><button onclick="cancel(event)">Cancel</button></td>
+        </tr>
+        <tr>
+            <td>Colddrink</td>
+            <td>30</td>
+            <td><input type="checkbox" class="box"></td>
+            <td><input type="number"></td>
+            <td><button onclick="cancel(event)">Cancel</button></td>
+        </tr>
+        <tr>
+            <td colspan="2"><button onclick="ord()" id="f">Order</button></td>
+            <td id="d1"></td>
+        </tr>
+    </table>
+    <table id="bill">
+
+
+    </table>
+    <div id="res"></div>
+    <script>
+        class Dish{
+            name=''
+            price=''
+            Quantity=''
+        }
+        let arr = []
+        let dishes = JSON.parse(localStorage.getItem('order')) || []
+        dishes.forEach(function (arr) {
+            let n = arr.name;
+            let t = document.getElementsByTagName('tr')
+            for (let x of t) {
+                if (x.firstElementChild.innerText == arr.name) {
+                    x.lastElementChild.firstElementChild.value = arr.Quantity;
+                    x.children[2].checked = true;
+                }
+            }
+        });
+        function cancel(evt) {
+            evt.target.parentNode.previousElementSibling.firstElementChild.value = "";
+            evt.target.parentNode.previousElementSibling.previousElementSibling.firstElementChild.checked = false;
+            ord()
+
+        }
+        function ord() {
+
+
+            let total = 0;
+            let a = document.getElementsByClassName('box')
+            for (let b of a) {
+                if (b.checked) {
+                    if (b.parentNode.previousElementSibling.previousElementSibling.innerText == "Biryani") {
+                        raita.checked = true;
+                        let dishprice = b.parentNode.nextElementSibling.firstElementChild.value
+                        raita.parentNode.nextElementSibling.firstElementChild.value = dishprice;
+                    }
+                    b.parentNode.parentNode.style = "background-color:yellow;"
+                    let dish = + b.parentNode.previousElementSibling.innerText;
+                    let quantity = b.parentNode.nextElementSibling.firstElementChild.value
+                    if (bir.checked && b.parentNode.previousElementSibling.previousElementSibling.innerText)
+                        total += (dish * quantity);
+                        let rr=new Dish()
+                        rr.name=b.parentNode.previousElementSibling.previousElementSibling.innerText
+                        rr.price=dish
+                        rr.Quantity=quantity
+                    // arr = {
+                    //     name: b.parentNode.previousElementSibling.previousElementSibling.innerText,
+                    //     price: dish,
+                    //     Quantity: quantity
+                    // }
+                    dishes.push(rr);
+
+                }
+            }
+            d1.innerText = total
+
+            localStorage.setItem('order', JSON.stringify(dishes))
+
+               bil()
+        }
+        function bil() {
+            dishes.forEach(function (arr) {
+                bill.innerHTML += " <tr><td>" + arr.name + "</td></tr>"
+                // console.log(arr)
+
+
+            })
+        }
+    </script>
+</body>
+
+
+</html>

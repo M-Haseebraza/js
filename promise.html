@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="radio" id="a">
+    <progress id="b" value="0" max="100">loding</progress>
+    <p id="c"></p>
+
+</body>
+<script>
+    function getdata() {
+        return new Promise(function (success, fail) {
+            setTimeout(function () {
+                if (a.checked) {
+                    success()
+                }
+                else {
+                    fail()
+                }
+            }, 2000)
+
+        })
+    }
+    getdata().then(function () {
+        return new Promise(function(){d,e})
+    }).catch(function () {
+        alert("select atleast one")
+    })
+</script>
+
+</html>

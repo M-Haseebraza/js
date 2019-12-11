@@ -1,0 +1,22 @@
+#add{
+    width: 200px;
+    height: 40px;
+    border-radius: 40px;
+    background: khaki;
+    outline: none;
+}
+body{
+    background-color:darkred;
+    color: lightcyan;
+    font-size: xx-large;
+    font-style: initial;
+    outline: none;
+}
+button{
+    width:150px ;
+    height: 40px;
+    border-radius: 30px;
+    font-size: large;
+    background-color: peru;
+    outline: none;
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    </style>
+</head>
+
+<body>
+    <input name="t" type="text" id="nme" placeholder="Enter Name">
+    <input name="t" type="" id="city" placeholder="Enter City">
+    <input name="t" type="email" id="mail" placeholder="Enter Email">
+    <button onclick="ad()">ADD</button>
+    <script>
+
+        //     city.style.border = "1px red solid"
+
+        // }
+        // if (mail.value == "") {
+        //     mail.style.border = "1px red solid"
+
+        // }
+
+
+        let std = [];
+        function ad() {
+            if (city.value == "") {
+                city.style.border = "1px red solid"
+
+            }
+
+            let obj = {
+                Name: nme.value,
+                City: city.value,
+                email: mail.value
+            }
+            std.push(obj)
+        }
+
+    </script>
+
+</body>
+
+</html>

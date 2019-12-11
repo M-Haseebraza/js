@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        #myCar {
+            position: absolute;
+            /* right: 0; */
+        }
+
+        .baloon {
+            width: 100px;
+            position: absolute;
+            /* bottom: 0; */
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div id="scoreBox">
+
+        <h1>SCORE <span id="score">0</span></h1>
+
+    </div>
+
+    <div id="baloonContainer">
+
+    </div>
+
+    <script>
+
+        let baloons = 6;
+        let explosion = new Audio();
+        explosion.src = "mySound.mp3";
+
+        for (let index = 0; index < 7; index++) {
+
+            let newBaloon = document.createElement('img');
+            newBaloon.src = "baloon.png";
+            newBaloon.className = 'baloon';
+            newBaloon.style.bottom = 0;
+
+            newBaloon.onclick = function () {
+
+                clearInterval(newBaloon.key);
+                newBaloon.remove();
+                explosion.currentTime = 0;
+                explosion.play();
+                score.innerText = +score.innerText + 5;
+            }
+
+            newBaloon.style.left = ((index) * 150) + 'px';
+
+            baloonContainer.appendChild(newBaloon)
+
+           newBaloon.key = setInterval(() => {
+
+                let newBottom = parseFloat(newBaloon.style.bottom) + 1;
+                newBaloon.style.bottom = newBottom + 'px';
+
+
+            }, 1 * ((index + 1) * 20));
+
+            console.log(index);
+
+        }
+
+
+    </script>
+
+
+</body>
+
+</html>

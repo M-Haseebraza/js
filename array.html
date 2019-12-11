@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input id="f1" type="text" placeholder="Enter Name of cities">
+    <input type="text" id="f2" placeholder="Enter Index">
+    <button onclick="adddata()">AddCities</button>
+    <button onclick="dis()">Print</button>
+    <button onclick="ind()">Index</button>
+    <input id="ad" placeholder="ADD CITY" type="text">
+    <!-- <button onclick="addstrt()">Start</button>
+    <button onclick="addlast()">last</button> -->
+    Start<input name="b" id="s" type="radio">
+    End<input name="b" id="l" type="radio">
+    <button onclick="addcity()">ADD</button>
+    <div id="d1"></div>
+    <!-- Range<input type="text" id="slic" >
+    <button onclick="disnam()"></button> -->
+    slice<input id="bg" type="text">
+    <button onclick="slce()">slic</button>
+    
+
+    <script>
+        let arr = [];
+        function adddata() {
+         arr = f1.value.split(',');
+
+        }
+        function dis() {
+            d1.innerHTML = arr;
+        }
+        function ind() {
+            let b = f2.value;
+            alert(arr[b]);
+        }
+        function addstrt() {
+            let z = ad.value;
+            arr.unshift(z);
+            alert(arr);
+        }
+        function addlast() {
+            let c = ad.value;
+            arr.push(c);
+            alert(arr);
+        }
+        function addcity() {
+            if (l.checked == true) {
+                addlast();
+                
+            }
+            else {
+                addstrt();
+                
+            }
+
+        }
+          function slce(){
+              let arr1=bg.value.split(',');
+              let t=arr1[0];
+              let u=arr1[1];
+              alert(arr.splice(t,u));
+          }
+
+    </script>
+
+</body>
+
+</html>

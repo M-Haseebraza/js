@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .balons {
+            width: 100px;
+            position: absolute;
+            display: inline-block;
+            /* bottom: 0; */
+        }
+    </style>
+</head>
+
+<body>
+
+    SCORE<span id="score"></span>
+    <div id="bcontainer">
+    </div>
+</body>
+<script>
+    let balons = 14;
+    for (let b = 0; b < 14; b++) {
+        let newbalon = document.createElement('img')
+        newbalon.src = Math.round(Math.random()*2)+".png"
+        newbalon.className = 'balons'
+        if (b < 7) {
+            newbalon.style.top = 0
+            newbalon.style.left = ((b) * 200) + 'px';
+            bcontainer.appendChild(newbalon)
+        }
+        else {
+            newbalon.style.bottom = 0
+            newbalon.style.left = ((b-7 ) * 200) + 'px';
+            bcontainer.appendChild(newbalon)
+
+        }
+        newbalon.onclick = function () {
+            newbalon.remove();
+            score.innerHTML = +score.innerHTML + 5;
+        }
+        setInterval(() => {
+            let blonbottom = parseFloat(newbalon.style.bottom) + 1;
+            newbalon.style.bottom = blonbottom + 'px';
+
+
+
+
+        }, 1 * ((b + 1) * 10));
+    }
+    // for (let b = 0; b < 6; b++) {
+    //     let newbalon = document.createElement('img')
+    //     newbalon.src = '1.png';
+    //     newbalon.className = 'balons'
+    //     newbalon.style.top = 0
+    //     newbalon.style.left = ((b) * 300) + 'px';
+    //     bcontainer.appendChild(newbalon)
+    //     newbalon.onclick = function () {
+    //         newbalon.remove();
+    //         score.innerHTML = +score.innerHTML + 5;
+    //     }
+    //     setInterval(() => {
+    //         let blonbottom = parseFloat(newbalon.style.top) + 1;
+    //         newbalon.style.top = blonbottom + 'px';
+
+
+
+    //     }, 1 * ((b + 1) * 50));
+    // }
+</script>
+
+</html>

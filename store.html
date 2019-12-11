@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="store.css">
+</head>
+
+<body>
+    Stock Catogory<select name="" id="add"></select>
+    <button onclick="addcatgry()">ADDCatagoery</button>
+    <button onclick="addstock()">Stock</button>
+    <button onclick="viw()">viewlist</button>
+    <table style="font-size: large; color: darkred; border: 2px black; background: wheat; text-align: center;"
+        id="viewlist"></table>
+</body>
+<script>
+    let catagry = [];
+    catagry = JSON.parse(localStorage.getItem("stock") || '[]')
+    function addcatgry() {
+        let catagory = prompt("Enter your Cataoery")
+        let catagre = {
+            name: catagory,
+            items: []
+        }
+        catagry.push(catagre)
+        console.log(catagry)
+        update()
+
+    }
+    function update() {
+        add.innerHTML = ''
+        catagry.forEach(function (a) {
+            add.innerHTML += "<option>" + a.name + "</option>"
+        })
+
+    }
+    function addstock() {
+        let inventoryname = prompt("Enter Name")
+        let inventoryprice = prompt("Enter Price")
+        let inventoryqty = prompt("Enter Qantity")
+
+        let inventory = {
+            name: inventoryname,
+            price: inventoryprice,
+            qantity: inventoryqty
+        }
+        let found = catagry.find(function (catagre) {
+            if (catagre.name == add.value) {
+                return true
+            }
+        })
+        found.items.push(inventory)
+        localStorage.setItem("stock", JSON.stringify(catagry));
+    }
+    function del() {
+        let indx = event.target.getAttribute('ind');
+        let catgry = event.target.getAttribute('data')
+        let catname = catagry.find(function (cat) {
+            if (cat.name == catgry)
+                return true;
+        })
+        catname.item.splice(indx,1);
+
+    }
+
+    function viw() {
+        viewlist.innerHTML = '    '
+        catagry.forEach(function (a) {
+            viewlist.innerHTML += "<tr><td>" + a.name + "</td></tr>"
+            a.items.forEach(function (item, index) {
+                viewlist.innerHTML += "<tr><td>" + item.name + "</td><td>" + item.price + "</td><td>" + item.qantity + "</td><td><button data=" + item + " ind=" + index + " onclick='del(event)' >Delete</button></td></tr>"
+            })
+            //  console.log(a.item.name)
+        })
+
+
+    }
+
+</script>
+
+</html>

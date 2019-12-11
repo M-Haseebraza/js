@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    </style>
+</head>
+
+<body>
+    <div id="box" style="width: 200px;height: 300px; border: 1px solid green; margin: auto;">
+    </div>
+    <img id="balon" src="2.png" style="width: 50px;position: absolute; left: 0; top: 0;bottom: 0; margin: auto;"
+        alt="">
+    <script>
+        let direction = "left"
+        setInterval(() => {
+            let currentlef = parseInt(balon.style.left)
+            if (direction == "left") {
+                if (currentlef < window.innerWidth) {
+                    direction = "left";
+                }
+                else {
+                    direction = "right";
+                }
+                let newleft = currentlef + 1;
+                balon.style.left = newleft + 'px';
+            }
+            if (direction == "right") {
+                if (currentlef == 0) {
+                    direction = "left";
+                } else {
+                    direction = "right"
+                }
+                let newleft = currentlef - 1;
+                balon.style.left = newleft + 'px';
+
+            }
+            let balonright = balon.offsetLeft + balon.offsetWidth;
+            let boxleft = box.offsetLeft;
+            if (balonright < boxleft) {
+                balon.src = "1.png"
+            }
+            else{
+                balon.src = "2.png"
+            }
+        }, 5)
+
+    </script>
+</body>
+
+</html>

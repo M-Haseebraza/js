@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        textarea{
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <textarea name="" id="lbox" cols="30" rows="30">
+    </textarea>
+    <button id="Right">RightButton</button>
+    <button id="Left">LeftButton</button>
+    <textarea name="" id="rbox" cols="30" rows="30"></textarea>
+    <script>
+        Right.onclick=function(){
+            if(lbox.value !="")
+            {
+                let a = lbox.value;
+                lbox.value="";
+                rbox.value= a;
+
+                
+
+            }
+        }
+        Left.onclick= function(){
+            if(rbox.value !="")
+            {
+                let b = rbox.value;
+                rbox.value="";
+                lbox.value= b;
+                
+                
+
+            }
+
+
+
+        }
+
+    </script>
+    
+</body>
+</html>

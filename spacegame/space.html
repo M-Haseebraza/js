@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="spacestyle.css">
+</head>
+
+<body>
+    <section id="maincontainer">
+        <div id="spaceshipcont">
+            <img id="spaceship" src="spaceship.png" alt="img not found">
+        </div>
+
+    </section>
+    <script>
+        let rocks;
+        window.onload = function () {
+            let game = {
+                addrocks() {
+
+                    for (let a = 0; a < 15; a++) {
+                        let rocks = document.createElement('img')
+                        rocks.src = "r1.png";
+                        rocks.style.width = "50px"
+                        rocks.style.position = 'absolute';
+                        rocks.style.right = "0"
+                        rocks.style.top = Math.round(Math.random() * window.innerHeight - 50) + 'px'
+                        maincontainer.appendChild(rocks);
+                        setInterval(() => {
+                            if (rocks.offsetLeft <= 0) {
+                                rocks.style.left = window.innerWidth + 'px';
+                                  rocks.style.top = Math.round(Math.random() * window.innerHeight - 50) + 'px'
+                            }
+                            rocks.style.left = rocks.offsetLeft - 1 + 'px';
+
+                        }, Math.random() * 100)
+
+                    }
+
+                },
+                gameover() {
+                },
+                moveship() {
+                    setInterval(() => {
+                        spaceshipcont.style.top = spaceshipcont.offsetTop + 1 + 'px';
+                    }, 60);
+                },
+                moveleft() {
+                    spaceshipcont.style.left = spaceshipcont.offsetLeft - 5 + 'px';
+                },
+                moveright() {
+                    spaceshipcont.style.left = spaceshipcont.offsetLeft + 5 + 'px';
+                },
+                moveup() {
+                    spaceshipcont.style.top = spaceshipcont.offsetTop - 5 + 'px';
+                },
+                movedown() {
+                    spaceshipcont.style.top = spaceshipcont.offsetTop + 5 + 'px';
+                },
+                bindkeys() {
+                    document.body.onkeydown = function (evt) {
+                        switch (evt.keyCode) {
+                            case 37:
+                                game.moveleft();
+                                break;
+                            case 38:
+                                game.moveup()
+                                break;
+                            case 39:
+                                game.moveright()
+                                break;
+                            case 40:
+                                game.movedown();
+                                break;
+                        }
+
+                    }
+                },
+                start() {
+                    game.moveship()
+                    // game.moveleft()
+                    // game.moveright()
+                    // game.moveup()
+                    // game.movedown()
+                    game.bindkeys()
+                    game.addrocks()
+                }
+
+            }
+            game.start()
+
+
+        }
+    </script>
+
+</body>
+
+</html>

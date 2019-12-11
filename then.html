@@ -1,0 +1,82 @@
+air-for-share
+How it works Download Upgrade Feedback Login / Register
+Text
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+
+
+
+
+
+        function getData() {
+
+            return new Promise(function (success, error) {
+
+                setTimeout(function () {
+
+                    success(60)
+
+                }, 4000);
+
+
+            });
+
+        }
+
+
+        function downloadVideo() {
+
+            return new Promise(function (c, e) {
+
+                setTimeout(function () { 
+                    
+                    c();
+
+                }, 4000)
+
+            });
+
+        }
+
+        getData().then(function (resp) {
+
+            return downloadVideo();
+
+        }).then(function (resp) {
+
+            return resp * 100;
+
+
+        }).then(function (resp) {
+
+            console.log(resp)
+
+        }).catch(function (err) {
+
+            console.log("I am erroring " + err);
+
+        })
+
+
+    </script>
+
+</body>
+
+</html>
+Clear Copy
+© 2011-2019 AirForShare.com
+Made in BirdsCorp.com with ❤️
+ 
+

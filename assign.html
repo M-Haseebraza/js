@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            background: rgb(53, 26, 26);
+        }
+
+        input {
+            display: block;
+            padding: 10px;
+            margin: auto;
+            width: 250px;
+            margin-top: 10px;
+            background-color: lightgray;
+            border-radius: 30px;
+            border: 2px gray solid;
+            color: blanchedalmond;
+            height: 30px;
+        }
+
+        div {
+            width: 300px;
+            height: 400px;
+            background: black;
+            margin: auto;
+            text-align: center;
+            color: white;
+            font-size: x-large;
+            text-align: center;
+        }
+
+        button {
+            position: relative;
+            top: 8px;
+            width: 150px;
+            height: 35px;
+            border-radius: 30px;
+            background: rgba(7, 0, 0, 0.274);
+            color: gray;
+            font-size: larger;
+        }
+
+        table {
+            position: absolute;
+            background: white;
+            border: 1px solid;
+            right: 0;
+            left: 0;
+            top: 0;
+            bottom: 0;
+             border: 2px solid black;
+             background: dimgray;
+        
+        }
+    </style>
+</head>
+
+<body>
+    <div id="fom">
+        <h1>Login</h1>
+        <input type="text" id="nme" placeholder="Enter your name">
+        <input type="email" id="mail" placeholder="Email">
+        <input type="text" id="city" placeholder="city">
+        <input type="password" id="pas" placeholder="password">
+        <button onclick="dis()">Submit</button>
+    </div>
+    <table id="feld">
+        <tr><th>History</th></tr>
+
+    </table>
+
+    <script>
+        function dis() {
+            let a = [nme.value, mail.value, city.value, pas.value];
+            a.forEach(function (b) {
+                feld.innerHTML += "<tr><td>" + b + "</td></tr>"
+            })
+            nme.value = "";
+            mail.value = "";
+            city.value = "";
+            pas.value = "";
+
+        }
+
+    </script>
+
+</body>
+
+</html>

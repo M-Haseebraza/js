@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            display: inline-block;
+            width: 200px;
+            height: 200px;
+            background-color: black;
+            
+        }
+    </style>
+</head>
+
+<body>
+    <div class="a" id="b1"></div>
+    <div class="a" id="b2"></div>
+    <div class="a" id="b3"></div>
+    <script>
+        b1.onclick = function () {
+            b1.style.background = "orange";
+            b3.style.background = "gray";
+            b2.style.background = "gray";
+
+
+        }
+        b2.onclick = function () {
+            b2.style.background = "orange";
+            b1.style.background = "gray";
+            b3.style.background = "gray";
+
+
+        }
+        b3.onclick = function () {
+            b1.style.background = "gray";
+            b3.style.background = "orange";
+            b2.style.background = "gray";
+
+
+        }
+        
+    </script>
+
+</body>
+
+</html>

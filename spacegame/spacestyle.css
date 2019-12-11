@@ -1,0 +1,20 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+#maincontainer{
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url(wall.jpg);
+}
+#spaceshipcont{
+    position: absolute;
+    width: 100px;
+    height: 65px;
+
+}
+#spaceship{
+    width: 100px;
+}

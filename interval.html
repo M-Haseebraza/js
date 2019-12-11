@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body style=" text-align: center;background: darkred;font-size: 500px; color: wheat;">
+    <div id="box">
+
+    </div>
+    <!-- <video controls src="animation.mp4" id="mg" style="display: none;width: 50%"></video>
+     -->
+    <span id="mg" style="display: none; font-size: 200px;">Hi Haseeb</span>
+    <span id="load" style="display: none; font-size: 200px;">loading</span>
+</body>
+<script>
+    let numb = 10
+
+    let key = setInterval(() => {
+        box.innerText = numb;
+
+        if (numb == 0) {
+            clearInterval(key);
+            box.style.display = 'none'
+            setInterval(() => {
+                load.style.display = "block"
+            }, 100);
+            load.style.display="none"
+            mg.style.display = "block"
+        }
+        numb--;
+    }, 800);
+</script>
+
+</html>
